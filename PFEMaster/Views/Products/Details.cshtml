@@ -1,0 +1,133 @@
+﻿@model PFEMaster.Models.Products
+
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Sidebar -->
+<ul class="sidebar navbar-nav">
+    @*<li class="nav-item">
+        <a class="nav-link" href="~/Dashboard">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>*@
+
+    <li class="nav-item">
+        <a class="nav-link" href="~/Categories">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Categories</span>
+        </a>
+    </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="~/Products">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Products</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="tables.html">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Orders</span>
+        </a>
+    </li>
+</ul>
+<div id="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="~/Products/Index">Products</a>
+            </li>
+            <li class="breadcrumb-item active">Details</li>
+
+        </ol>
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fas fa-table"></i>
+                Details
+            </div>
+            <div class="card-body">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Category.CategoryName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Category.CategoryName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ProductName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ProductName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ProductImage)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ProductImage)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Quantity)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Quantity)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Price)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CreatedDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CreatedDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ModifiedDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ModifiedDate)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.ProductsId }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+</div>
+</div>
+<!-- /.container-fluid -->
+</div>
+

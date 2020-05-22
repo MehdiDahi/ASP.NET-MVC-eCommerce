@@ -1,0 +1,42 @@
+﻿@model WebApplication1.Models.LoginViewModel
+@{
+    ViewBag.Title = "Admin";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial scale=1" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <link href="~/Content/css/connexion.css" rel="stylesheet" />
+    <!-- Bootstrap core CSS-->
+    <link href="~/Content/AdminStyle/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body id="page-top">
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+        <h1 class="navbar-brand mr-1">Argan Shop Administration</h1>
+    </nav>
+    <section id="container-cnx">
+        <div class="container-user" id="container-user">
+            <div class="form-container sign-in-container-admin">
+                @using (Html.BeginForm("Index", "Categories", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form", role = "form" }))
+            {
+                    @Html.AntiForgeryToken()
+                    <h1 class="h1">Sign in</h1>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "input-admin", @placeholder = "Email" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "input-admin", @placeholder = "Password" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    <button class="btn-signin-admin btn-user bg-dark">Sign In</button>
+                }
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

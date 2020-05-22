@@ -1,0 +1,70 @@
+﻿@using Microsoft.AspNet.Identity
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "Logoff", @class= "nav-Links" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="header-nav">
+            <a href="~/Home/Index">
+                <img class="logo" src="~/Content/image/logo/logo.png" alt="" />
+            </a>
+            <nav class="nav-Links">
+                <ul>
+                    <li><a href="#" class="link">Produits</a></li>
+                    <li><a href="~/Home/About" class="link">À propos de nous</a></li>
+                    <li>
+                        <a href="~/Home/Contact" class="link">Nous contacter</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="nav-user">
+                <a class="search">
+                    <input type="text" placeholder="Rechercher..." />
+                    <img src="~/Content/image/User/search.svg" alt="" />
+                </a>
+                <a href="" class="basket">
+                    <img src="~/Content/image/User/shopping-bag.svg" alt="" />
+                    <div id="nb-cart"><p>5</p></div>
+                </a>
+                <div class="user-name link">
+                    @Html.ActionLink("Salut " + User.Identity.GetUserName(), "Index", "Manage")
+                </div>
+                    
+                <a href="javascript:document.getElementById('Logoff').submit()"><button class="btn-cnx" id="cnx">Déconnecter</button></a>
+            </div>
+        </div>
+    }
+}
+
+else
+{
+
+    <div class="header-nav">
+        <a href="~/Home/Index">
+            <img class="logo" src="~/Content/image/logo/logo.png" alt="" />
+        </a>
+        <nav class="nav-Links">
+            <ul>
+                <li><a href="#" class="link">Produits</a></li>
+                <li><a href="~/Home/About" class="link">À propos de nous</a></li>
+                <li>
+                    <a href="~/Home/Contact" class="link">Nous contacter</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="nav-user">
+            <a class="search">
+                <input type="text" placeholder="Rechercher..." />
+                <img src="~/Content/image/User/search.svg" alt="" />
+            </a>
+            <a href="" class="basket">
+                <img src="~/Content/image/User/shopping-bag.svg" alt="" />
+                <div id="nb-cart"><p>5</p></div>
+            </a>
+            <a href="~/Account/ConnexionMuli"><button class="btn-cnx" id="cnx">Connecter</button></a>
+        </div>
+    </div>
+}
+
