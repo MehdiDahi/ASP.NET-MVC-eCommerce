@@ -66,7 +66,7 @@ namespace PFEMaster.Controllers
         // POST: Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserName,Email,Password,ConfirmPassword,UserRole")]ApplicationUser User)
+        public ActionResult Edit(ApplicationUser User)
         {
             if (ModelState.IsValid)
             {

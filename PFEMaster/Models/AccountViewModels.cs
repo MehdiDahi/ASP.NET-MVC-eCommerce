@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using PFEMaster.Models;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace WebApplication1.Models
 {
@@ -80,17 +84,18 @@ namespace WebApplication1.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-
-        [Required(ErrorMessage = "Le champ Role est requis.")]
-        public string UserRole { get; set; } = "buyer";
+        public string UserRole { get; set; }
+        public ICollection<Addresses> Adresses { get; set; }
     }
 
     public class ConnexionMultiViewMolel
     {
         public LoginViewModel loginModel { get; set; }
         public RegisterViewModel registerModel { get; set; }
+        public ApplicationUser applicationUserModel { get; set; }
+        public Addresses addressModel { get; set; }
     }
 
     public class ResetPasswordViewModel
@@ -108,7 +113,7 @@ namespace WebApplication1.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

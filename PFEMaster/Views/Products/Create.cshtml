@@ -16,32 +16,32 @@
 
     <li class="nav-item">
         <a class="nav-link" href="~/Categories">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fa fa-list"></i>
             <span>Categories</span>
         </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item active">
         <a class="nav-link" href="~/Products">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fa fa-list"></i>
             <span>Products</span>
         </a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fa fa-shopping-cart"></i>
             <span>Orders</span>
         </a>
     </li>
-    <li class="nav-item active">
+    <li class="nav-item">
         <a class="nav-link" href="~/Roles">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fa fa-id-badge"></i>
             <span>Roles</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="~/Users">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fa fa-users"></i>
             <span>Users</span>
         </a>
     </li>
@@ -91,8 +91,8 @@
                     <div class="form-group">
                         <label class="control-label col-md-2">Image</label>
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.ProductImage, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ProductImage, "", new { @class = "text-danger" })
+                            <input type="file" name="ImageUpload" />
+                            @Html.ValidationMessageFor(model => model.ImageUrl, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
@@ -121,22 +121,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2">Created Date</label>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-2">Modified Date</label>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.ModifiedDate, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ModifiedDate, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <a href="~/Products/Index" class="btn btn-danger">Cancel</a>
                             <input type="submit" value="Add" class="btn btn-primary" />
@@ -148,3 +132,4 @@
     </div>
     <!-- /.container-fluid -->
 </div>
+

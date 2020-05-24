@@ -17,32 +17,32 @@
 
         <li class="nav-item">
             <a class="nav-link" href="~/Categories">
-                <i class="fas fa-fw fa-table"></i>
+                <i class="fa fa-list"></i>
                 <span>Categories</span>
             </a>
         </li>
         <li class="nav-item active">
             <a class="nav-link" href="~/Products">
-                <i class="fas fa-fw fa-table"></i>
+                <i class="fa fa-list"></i>
                 <span>Products</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link" href="tables.html">
-                <i class="fas fa-fw fa-table"></i>
+                <i class="fa fa-shopping-cart"></i>
                 <span>Orders</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="~/Roles">
-                <i class="fas fa-fw fa-table"></i>
+                <i class="fa fa-id-badge"></i>
                 <span>Roles</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="~/Users">
-                <i class="fas fa-fw fa-table"></i>
+                <i class="fa fa-users"></i>
                 <span>Users</span>
             </a>
         </li>
@@ -71,9 +71,12 @@
                             <thead>
                                 <tr>
                                     <th>Sr. No.</th>
-                                    <th>Product Name</th>
+                                    <th>Image</th>
+                                    <th>Name</th>
                                     <th>Quantity</th>
                                     <th>Price</th>
+                                    <th>Creation</th>
+                                    <th>Update</th>
                                     <th>Action</th>
 
                                 </tr>
@@ -81,9 +84,12 @@
                             <tfoot>
                                 <tr>
                                     <th>Sr. No.</th>
-                                    <th>Products Name</th>
+                                    <th>Image</th>
+                                    <th>Name</th>
                                     <th>Quantity</th>
                                     <th>Price</th>
+                                    <th>Creation</th>
+                                    <th>Update</th>
                                     <th>Action</th>
                                 </tr>
                             </tfoot>
@@ -93,9 +99,12 @@
 
                                     <tr>
                                         <td>@item.ProductsId</td>
+                                        <td>@item.ImageUrl</td>
                                         <td>@item.ProductName</td>
                                         <td>@item.Quantity</td>
                                         <td>@item.Price</td>
+                                        <td>@item.CreatedDate.ToShortDateString()</td>
+                                        <td>@item.ModifiedDate.ToShortDateString()</td>
                                         <td>
                                             <a href="~/Products/Edit?id=@item.ProductsId" class="btn btn-outline-secondary fa fa-pencil-alt"></a>
                                             <a href="~/Products/Delete?id=@item.ProductsId" class="btn btn-outline-danger fa fa-trash"></a>

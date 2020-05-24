@@ -7,7 +7,7 @@ using System.Web;
 
 namespace PFEMaster.Models
 {
-    public class Products
+    public partial class Products
     {
         public int ProductsId { get; set; }
         [Required(ErrorMessage = "Product Name is Required")]
@@ -15,7 +15,10 @@ namespace PFEMaster.Models
         public string ProductName { get; set; }
         [Required(ErrorMessage = "Description is Required")]
         public string Description { get; set; }
-        public string ProductImage { get; set; }
+        [DataType(DataType.Upload)]
+        HttpPostedFileBase ImageUpload { get; set; }
+        [DataType(DataType.ImageUrl)]
+        public string ImageUrl { get; set; }
         [Required]
         [Range(typeof(int), "1", "500", ErrorMessage = "Invalid Quantity")]
         public int Quantity { get; set; }

@@ -1647,6 +1647,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AddressesController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -1676,8 +1677,49 @@
     <Compile Include="Migrations\202005210952574_RegisterTable.Designer.cs">
       <DependentUpon>202005210952574_RegisterTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005222224113_productUpdate.cs" />
+    <Compile Include="Migrations\202005222224113_productUpdate.Designer.cs">
+      <DependentUpon>202005222224113_productUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005230120103_productUpdateImg.cs" />
+    <Compile Include="Migrations\202005230120103_productUpdateImg.Designer.cs">
+      <DependentUpon>202005230120103_productUpdateImg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005230143576_productUpdateImgs.cs" />
+    <Compile Include="Migrations\202005230143576_productUpdateImgs.Designer.cs">
+      <DependentUpon>202005230143576_productUpdateImgs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005231731068_addressTable.cs" />
+    <Compile Include="Migrations\202005231731068_addressTable.Designer.cs">
+      <DependentUpon>202005231731068_addressTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005231828314_addressTableUpdate.cs" />
+    <Compile Include="Migrations\202005231828314_addressTableUpdate.Designer.cs">
+      <DependentUpon>202005231828314_addressTableUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005241507583_UserTableUpdate.cs" />
+    <Compile Include="Migrations\202005241507583_UserTableUpdate.Designer.cs">
+      <DependentUpon>202005241507583_UserTableUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005241514394_UserTableUpdat.cs" />
+    <Compile Include="Migrations\202005241514394_UserTableUpdat.Designer.cs">
+      <DependentUpon>202005241514394_UserTableUpdat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005241522379_UserTableUpd.cs" />
+    <Compile Include="Migrations\202005241522379_UserTableUpd.Designer.cs">
+      <DependentUpon>202005241522379_UserTableUpd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005241541393_UserTa.cs" />
+    <Compile Include="Migrations\202005241541393_UserTa.Designer.cs">
+      <DependentUpon>202005241541393_UserTa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005242144280_addressUpdate.cs" />
+    <Compile Include="Migrations\202005242144280_addressUpdate.Designer.cs">
+      <DependentUpon>202005242144280_addressUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Addresses.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -1802,6 +1844,11 @@
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Account\AdminRegister.cshtml" />
+    <Content Include="Views\Addresses\Create.cshtml" />
+    <Content Include="Views\Addresses\Delete.cshtml" />
+    <Content Include="Views\Addresses\Details.cshtml" />
+    <Content Include="Views\Addresses\Edit.cshtml" />
+    <Content Include="Views\Addresses\Index.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1812,6 +1859,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ProductImg\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202005160612095_InitialCreate.resx">
@@ -1828,6 +1876,36 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005210952574_RegisterTable.resx">
       <DependentUpon>202005210952574_RegisterTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005222224113_productUpdate.resx">
+      <DependentUpon>202005222224113_productUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005230120103_productUpdateImg.resx">
+      <DependentUpon>202005230120103_productUpdateImg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005230143576_productUpdateImgs.resx">
+      <DependentUpon>202005230143576_productUpdateImgs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005231731068_addressTable.resx">
+      <DependentUpon>202005231731068_addressTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005231828314_addressTableUpdate.resx">
+      <DependentUpon>202005231828314_addressTableUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005241507583_UserTableUpdate.resx">
+      <DependentUpon>202005241507583_UserTableUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005241514394_UserTableUpdat.resx">
+      <DependentUpon>202005241514394_UserTableUpdat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005241522379_UserTableUpd.resx">
+      <DependentUpon>202005241522379_UserTableUpd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005241541393_UserTa.resx">
+      <DependentUpon>202005241541393_UserTa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005242144280_addressUpdate.resx">
+      <DependentUpon>202005242144280_addressUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

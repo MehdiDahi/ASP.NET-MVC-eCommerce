@@ -3,6 +3,9 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
+using PFEMaster.Models;
+using System.Web.Mvc;
 
 namespace WebApplication1.Models
 {
@@ -10,6 +13,7 @@ namespace WebApplication1.Models
     public class ApplicationUser : IdentityUser
     {
         public string UserRole { get; set; }
+        public ICollection<Addresses> Adresses { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -35,6 +39,8 @@ namespace WebApplication1.Models
 
         public System.Data.Entity.DbSet<PFEMaster.Models.Products> Products { get; set; }
 
-        public System.Data.Entity.DbSet<PFEMaster.Models.RoleViewModel> RoleViewModels { get; set; }
+        public System.Data.Entity.DbSet<PFEMaster.Models.Addresses> Addresses { get; set; }
+
+        
     }
 }

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PFEMaster.Models;
 using WebApplication1.Models;
+using System.IO;
 
 namespace PFEMaster.Controllers
 {
@@ -50,15 +51,18 @@ namespace PFEMaster.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductsId,ProductName,Description,ProductImage,Quantity,Price,CategoryId,CreatedDate,ModifiedDate")] Products products)
+        public ActionResult Create(Products products)
         {
+            
             if (ModelState.IsValid)
             {
+                products.CreatedDate = DateTime.Parse(DateTime.Today.ToString());
                 db.Products.Add(products);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
 
+            }
+            
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", products.CategoryId);
             return View(products);
         }
@@ -88,6 +92,7 @@ namespace PFEMaster.Controllers
         {
             if (ModelState.IsValid)
             {
+                products.ModifiedDate = DateTime.Parse(DateTime.Today.ToString());
                 db.Entry(products).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

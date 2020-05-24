@@ -15,32 +15,32 @@
 
     <li class="nav-item">
         <a class="nav-link" href="~/Categories">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fa fa-list"></i>
             <span>Categories</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="~/Products">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fa fa-list"></i>
             <span>Products</span>
         </a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fa fa-shopping-cart"></i>
             <span>Orders</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="~/Roles">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fa fa-id-badge"></i>
             <span>Roles</span>
         </a>
     </li>
     <li class="nav-item active">
         <a class="nav-link" href="~/Users">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fa fa-users"></i>
             <span>Users</span>
         </a>
     </li>
@@ -48,7 +48,9 @@
 <div id="content-wrapper">
     <div class="container-fluid">
         <!-- Breadcrumbs-->
-
+@using (Html.BeginForm("AdminRegister", "Account", FormMethod.Post, new { @class = "form", role = "form" }))
+{
+    @Html.AntiForgeryToken()
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="#">Dashboard</a>
@@ -67,9 +69,6 @@
 
             </div>
             <div class="card-body">
-                @using (Html.BeginForm("AdminRegister", "Account", FormMethod.Post, new { @class = "form", role = "form" }))
-            {
-                    @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                     <div class="form-group">
@@ -110,16 +109,65 @@
                             @Html.ValidationMessageFor(model => model.UserRole, "", new { @class = "text-danger" })
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <a href="~/Users" class="btn btn-danger">Cancel</a>
-                            <input type="submit" value="Add" class="btn btn-primary" />
-                        </div>
-                    </div>
-                }
-
             </div>
         </div>
+        @*<div class="card mb-3">
+            <div class="card-header">
+                <i class="fas fa-table"></i>
+                Add New Adress
+
+            </div>
+            <div class="card-body">
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Contact Name</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.addressModel.ContactName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.addressModel.ContactName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Country</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.addressModel.Country, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.addressModel.Country, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Address</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.addressModel.Address, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.addressModel.Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Zip/Postal Code</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.addressModel.ZipCode, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.addressModel.ZipCode, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Mobile</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.addressModel.Mobile, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.addressModel.Mobile, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+            </div>
+        </div>*@
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <a href="~/Users" class="btn btn-danger">Cancel</a>
+                <input type="submit" value="Add" class="btn btn-primary" />
+            </div>
+        </div>
+}
     </div>
     <!-- /.container-fluid -->
 </div>
