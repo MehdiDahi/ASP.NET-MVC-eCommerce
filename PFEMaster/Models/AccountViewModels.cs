@@ -96,6 +96,9 @@ namespace WebApplication1.Models
         public RegisterViewModel registerModel { get; set; }
         public ApplicationUser applicationUserModel { get; set; }
         public Addresses addressModel { get; set; }
+        public Products productModel { get; set; }
+        public Category categoryModel { get; set; }
+
     }
 
     public class ResetPasswordViewModel

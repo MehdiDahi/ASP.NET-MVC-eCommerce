@@ -1,8 +1,8 @@
-﻿@model WebApplication1.Models.LoginViewModel
+﻿@*@model WebApplication1.Models.LoginViewModel
 @{
     ViewBag.Title = "Admin";
     Layout = null;
-}
+}*@
 
 <!DOCTYPE html>
 
@@ -23,7 +23,7 @@
     <section id="container-cnx">
         <div class="container-user" id="container-user">
             <div class="form-container sign-in-container-admin">
-                @using (Html.BeginForm("Index", "Categories", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form", role = "form" }))
+                @*@using (Html.BeginForm("Index", "Categories", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form", role = "form" }))
             {
                     @Html.AntiForgeryToken()
                     <h1 class="h1">Sign in</h1>
@@ -33,7 +33,7 @@
                     @Html.PasswordFor(m => m.Password, new { @class = "input-admin", @placeholder = "Password" })
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     <button class="btn-signin-admin btn-user bg-dark">Sign In</button>
-                }
+                }*@
             </div>
         </div>
     </section>

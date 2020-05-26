@@ -1,0 +1,91 @@
+﻿@model IEnumerable<PFEMaster.Models.Products>
+
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section id="main-container-1">
+    <div class="wrapper">
+        <h2 data-aos="fade-right">
+            nos spécialités <br />
+            du terroir
+        </h2>
+
+        <div class="container d-md-flex align-items-stretch">
+
+            <nav id="sidebar">
+                <div class="p-4 pt-5">
+                    <h5>Categories</h5>
+                    <ul class="list-unstyled components mb-5">
+                    @foreach (var item in Model)
+                    {
+                        <li>
+                            <a href="~/Products/productsByCat?id=@item.CategoryId">@Html.DisplayFor(modelItem => item.Category.CategoryName)</a>
+                        </li>
+                    }
+                    </ul>
+                </div>
+            </nav>
+
+        <div id="container-1"  data-aos="fade-up">
+        @foreach (var item in Model)
+        {
+            <div class="box-all">
+                <div class="box">
+                    <div class="img">
+                        <img src="~/ProductImg/@Html.DisplayFor(modelItem => item.ImageUrl)" alt="" />
+                    </div>
+                    <div class="content">
+                        <h3>@Html.DisplayFor(modelItem => item.ProductName)</h3>
+                        <div class="price">
+                            <label>Qte : </label>
+                            @Html.DisplayFor(modelItem => item.Quantity),
+                            <label>Price : </label>
+                            @Html.DisplayFor(modelItem => item.Price) $
+                        </div>
+                        <button class="btn">Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+            
+    </div>
+</div>
+</section>
+
+
+@*@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProductsId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProductsId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProductsId })
+        </td>
+    </tr>
+}*@

@@ -24,6 +24,20 @@ namespace PFEMaster.Controllers
             return View(products.ToList());
         }
 
+        // GET: Products
+        public ActionResult allProducts()
+        {
+            var products = db.Products.Include(p => p.Category);
+            return View(products.ToList());
+        }
+
+        
+        public ActionResult productsByCat(int id)
+        {
+            var products = db.Products.Include(p => p.Category).Where(p => p.CategoryId == id);
+            return View(products.ToList());
+        }
+
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
@@ -56,6 +70,11 @@ namespace PFEMaster.Controllers
             
             if (ModelState.IsValid)
             {
+                if(products.ImageUrl == null)
+                {
+                    products.ImageUrl = "no-image.png";
+                }
+                
                 products.CreatedDate = DateTime.Parse(DateTime.Today.ToString());
                 db.Products.Add(products);
                 db.SaveChanges();

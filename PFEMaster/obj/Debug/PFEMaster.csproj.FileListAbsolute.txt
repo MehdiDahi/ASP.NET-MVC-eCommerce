@@ -152,7 +152,6 @@ C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaste
 C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaster\bin\System.Web.WebPages.Deployment.xml
 C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaster\bin\System.Web.WebPages.Razor.xml
 C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaster\bin\System.Web.Mvc.xml
-C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaster\obj\Debug\PFEMaster.csprojResolveAssemblyReference.cache
 C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaster\obj\Debug\PFEMaster.Migrations.InitialCreate.resources
 C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaster\obj\Debug\PFEMaster.Migrations.CategoryTable.resources
 C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaster\obj\Debug\PFEMaster.Migrations.ProductTable.resources
@@ -171,3 +170,4 @@ C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaste
 C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaster\obj\Debug\PFEMaster.Migrations.UserTableUpd.resources
 C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaster\obj\Debug\PFEMaster.Migrations.UserTa.resources
 C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaster\obj\Debug\PFEMaster.Migrations.addressUpdate.resources
+C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaster\obj\Debug\PFEMaster.csprojResolveAssemblyReference.cache
