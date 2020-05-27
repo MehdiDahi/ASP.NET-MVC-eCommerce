@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -15,8 +16,8 @@ namespace PFEMaster.Models
         public string ProductName { get; set; }
         [Required(ErrorMessage = "Description is Required")]
         public string Description { get; set; }
-        [DataType(DataType.Upload)]
-        HttpPostedFileBase ImageUpload { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase ImageUpload { get; set; }
         [DataType(DataType.ImageUrl)]
         public string ImageUrl { get; set; }
         [Required]

@@ -1633,6 +1633,7 @@
     <Content Include="Content\js\global.js" />
     <Content Include="Content\js\kiwwwi-slider.min.js" />
     <Content Include="Content\js\menu.js" />
+    <Content Include="Content\js\scripts.js" />
     <Content Include="Content\js\Slider.js" />
     <Content Include="Content\js\user.js" />
     <Content Include="Content\SideBare\css\bootstrap.min.css" />
@@ -1729,6 +1730,14 @@
     <Compile Include="Migrations\202005242144280_addressUpdate.cs" />
     <Compile Include="Migrations\202005242144280_addressUpdate.Designer.cs">
       <DependentUpon>202005242144280_addressUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005262325159_daad.cs" />
+    <Compile Include="Migrations\202005262325159_daad.Designer.cs">
+      <DependentUpon>202005262325159_daad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005271838525_aa.cs" />
+    <Compile Include="Migrations\202005271838525_aa.Designer.cs">
+      <DependentUpon>202005271838525_aa.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -2017,6 +2026,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005242144280_addressUpdate.resx">
       <DependentUpon>202005242144280_addressUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005262325159_daad.resx">
+      <DependentUpon>202005262325159_daad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005271838525_aa.resx">
+      <DependentUpon>202005271838525_aa.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

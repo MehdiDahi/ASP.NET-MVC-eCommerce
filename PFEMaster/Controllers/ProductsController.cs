@@ -27,8 +27,9 @@ namespace PFEMaster.Controllers
         // GET: Products
         public ActionResult allProducts()
         {
+            var categories = db.Categories;
             var products = db.Products.Include(p => p.Category);
-            return View(products.ToList());
+            return View(categories.ToList());
         }
 
         
@@ -53,6 +54,7 @@ namespace PFEMaster.Controllers
             return View(products);
         }
 
+
         // GET: Products/Create
         public ActionResult Create()
         {
@@ -70,11 +72,20 @@ namespace PFEMaster.Controllers
             
             if (ModelState.IsValid)
             {
-                if(products.ImageUrl == null)
+                if (products.ImageUpload != null)
                 {
-                    products.ImageUrl = "no-image.png";
+                    string fileName = Path.GetFileNameWithoutExtension(products.ImageUpload.FileName);
+                    string extention = Path.GetExtension(products.ImageUpload.FileName);
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extention;
+                    products.ImageUrl = "~/ProductImg/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/ProductImg/"), fileName);
+                    products.ImageUpload.SaveAs(fileName);
                 }
-                
+                else
+                {
+                    products.ImageUrl = "~/ProductImg/no-image.png";
+                }
+
                 products.CreatedDate = DateTime.Parse(DateTime.Today.ToString());
                 db.Products.Add(products);
                 db.SaveChanges();

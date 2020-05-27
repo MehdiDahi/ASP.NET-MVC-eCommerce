@@ -68,10 +68,11 @@
 
             </div>
             <div class="card-body">
-                @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { encrypte = "multipart/form-data" }))
+                @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return jQueryAjaxPost(this);" }))
             {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ImageUrl)
                     <div class="form-group">
                         <label class="control-label col-md-2">Product Name</label>
                         <div class="col-md-10">
@@ -91,7 +92,8 @@
                     <div class="form-group">
                         <label class="control-label col-md-2">Image</label>
                         <div class="col-md-10">
-                            <input type="file" name="ImageUpload" />
+                            <img src="~/ProductImg/no-image.png" style="height:200px; width:200px;" alt="" id="imagePreview"/>
+                            <input type="file" name="ImageUpload" accept="image/jpeg,image/png" onchange="ShowImagePreview(this, document.getElementById('imagePreview'))" />
                             @Html.ValidationMessageFor(model => model.ImageUrl, "", new { @class = "text-danger" })
                         </div>
                     </div>
