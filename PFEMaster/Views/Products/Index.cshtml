@@ -48,7 +48,7 @@
         </li>
     </ul>
     <div id="content-wrapper">
-        <div class="container-fluid">
+        <div id="myform" class="container-fluid">
             <!-- Breadcrumbs-->
 
             <ol class="breadcrumb">
@@ -63,7 +63,7 @@
                 <div class="card-header">
                     <i class="fas fa-table"></i>
                     Product Details
-                    <a href="~/Products/Create" class="btn btn-info pull-right fa fa-plus">Add New</a>
+                    <a onclick="Add('@Url.Action("addOrEdit","Products")')" style="color: white;" class="btn btn-info pull-right fa fa-plus">Add New</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -75,8 +75,6 @@
                                     <th>Name</th>
                                     <th>Quantity</th>
                                     <th>Price</th>
-                                    <th>Creation</th>
-                                    <th>Update</th>
                                     <th>Action</th>
 
                                 </tr>
@@ -88,8 +86,6 @@
                                     <th>Name</th>
                                     <th>Quantity</th>
                                     <th>Price</th>
-                                    <th>Creation</th>
-                                    <th>Update</th>
                                     <th>Action</th>
                                 </tr>
                             </tfoot>
@@ -103,10 +99,8 @@
                                         <td>@item.ProductName</td>
                                         <td>@item.Quantity</td>
                                         <td>@item.Price</td>
-                                        <td>@item.CreatedDate.ToShortDateString()</td>
-                                        <td>@item.ModifiedDate.ToShortDateString()</td>
                                         <td>
-                                            <a href="~/Products/Edit?id=@item.ProductsId" class="btn btn-outline-secondary fa fa-pencil-alt"></a>
+                                            <a onclick="Edit('@Url.Action("addOrEdit","Products",new { id= @item.ProductsId})')" class="btn btn-outline-secondary fa fa-pencil-alt"></a>
                                             <a href="~/Products/Delete?id=@item.ProductsId" class="btn btn-outline-danger fa fa-trash"></a>
                                         </td>
 

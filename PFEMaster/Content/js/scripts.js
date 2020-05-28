@@ -34,3 +34,34 @@ function jQueryAjaxPost(form) {
     }
     return false;
 }
+
+function Edit(url) {
+
+    $.ajax({
+        type: 'GET',
+        url: url,
+        success: function (response) {
+            
+            $("#myform").html(response);
+            $("#mynavbar").hide();
+            document.getElementById("liItem").innerHTML = "Edit Product";
+            document.getElementById("cardItem").innerHTML = "Edit Product";
+            document.getElementById("saveInput").value = "Save";
+        }
+
+    });
+}
+
+function Add(url) {
+
+    $.ajax({
+        type: 'GET',
+        url: url,
+        success: function (response) {
+
+            $("#myform").html(response);
+            $("#mynavbar").hide();
+        }
+
+    });
+}

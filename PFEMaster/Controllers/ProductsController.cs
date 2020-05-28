@@ -27,9 +27,9 @@ namespace PFEMaster.Controllers
         // GET: Products
         public ActionResult allProducts()
         {
-            var categories = db.Categories;
+            //var categories = db.Categories;
             var products = db.Products.Include(p => p.Category);
-            return View(categories.ToList());
+            return View(products.ToList());
         }
 
         
@@ -54,12 +54,18 @@ namespace PFEMaster.Controllers
             return View(products);
         }
 
-
-        // GET: Products/Create
-        public ActionResult Create()
+        // GET: Products/addOrEdit
+        public ActionResult addOrEdit(int id = 0)
         {
+            Products products = new Products();
+            if (id != 0)
+            {
+                products = db.Products.Where(p => p.ProductsId == id).FirstOrDefault<Products>();
+            }
+            
+
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
-            return View();
+            return View(products);
         }
 
         // POST: Products/Create
@@ -67,9 +73,9 @@ namespace PFEMaster.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Products products)
+        public ActionResult addOrEdit(Products products)
         {
-            
+
             if (ModelState.IsValid)
             {
                 if (products.ImageUpload != null)
@@ -80,53 +86,27 @@ namespace PFEMaster.Controllers
                     products.ImageUrl = "~/ProductImg/" + fileName;
                     fileName = Path.Combine(Server.MapPath("~/ProductImg/"), fileName);
                     products.ImageUpload.SaveAs(fileName);
+
+                }
+
+
+                if (products.ProductsId == 0)
+                {
+                    //products.CreatedDate = DateTime.Parse(DateTime.Today.ToString());
+                    db.Products.Add(products);
+                    db.SaveChanges();
                 }
                 else
                 {
-                    products.ImageUrl = "~/ProductImg/no-image.png";
+                    //products.ModifiedDate = DateTime.Parse(DateTime.Today.ToString());
+                    db.Entry(products).State = EntityState.Modified;
+                    db.SaveChanges();
                 }
 
-                products.CreatedDate = DateTime.Parse(DateTime.Today.ToString());
-                db.Products.Add(products);
-                db.SaveChanges();
                 return RedirectToAction("Index");
 
             }
-            
-            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", products.CategoryId);
-            return View(products);
-        }
 
-        // GET: Products/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Products products = db.Products.Find(id);
-            if (products == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", products.CategoryId);
-            return View(products);
-        }
-
-        // POST: Products/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductsId,ProductName,Description,ProductImage,Quantity,Price,CategoryId,CreatedDate,ModifiedDate")] Products products)
-        {
-            if (ModelState.IsValid)
-            {
-                products.ModifiedDate = DateTime.Parse(DateTime.Today.ToString());
-                db.Entry(products).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", products.CategoryId);
             return View(products);
         }

@@ -34,7 +34,7 @@
                     <div class="box-all">
                         <div class="box">
                             <div class="img">
-                                <img src="~/ProductImg/@Html.DisplayFor(modelItem => item.ImageUrl)" alt="" />
+                                <img src="@Url.Content(item.ImageUrl)" alt="" />
                             </div>
                             <div class="content">
                                 <h3>@Html.DisplayFor(modelItem => item.ProductName)</h3>

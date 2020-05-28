@@ -1739,6 +1739,10 @@
     <Compile Include="Migrations\202005271838525_aa.Designer.cs">
       <DependentUpon>202005271838525_aa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005280024432_dateUp.cs" />
+    <Compile Include="Migrations\202005280024432_dateUp.Designer.cs">
+      <DependentUpon>202005280024432_dateUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Addresses.cs" />
@@ -1854,10 +1858,8 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Account\AdminLogin.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
@@ -1971,6 +1973,7 @@
     <Content Include="Content\SideBare\scss\bootstrap\_variables.scss" />
     <Content Include="Content\SideBare\scss\style.scss" />
     <Content Include="Views\Products\productsByCat.cshtml" />
+    <Content Include="Views\Products\addOrEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2032,6 +2035,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005271838525_aa.resx">
       <DependentUpon>202005271838525_aa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005280024432_dateUp.resx">
+      <DependentUpon>202005280024432_dateUp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

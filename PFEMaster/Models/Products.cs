@@ -28,7 +28,12 @@ namespace PFEMaster.Models
         public float Price { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime ModifiedDate { get; set; }
+        //public DateTime CreatedDate { get; set; }
+        //public DateTime ModifiedDate { get; set; }
+
+        public Products()
+        {
+            ImageUrl = "~/ProductImg/no-image.png";
+        }
     }
 }

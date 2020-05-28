@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PFEMaster.Models.Category>
+﻿@model IEnumerable<PFEMaster.Models.Products>
 
 @{
     ViewBag.Title = "Products";
@@ -21,14 +21,14 @@
                     @foreach (var item in Model)
                     {
                         <li>
-                            <a href="~/Products/productsByCat?id=@item.CategoryId">@Html.DisplayFor(modelItem => item.CategoryName)</a>
+                            <a href="~/Products/productsByCat?id=@item.CategoryId">@Html.DisplayFor(modelItem => item.Category.CategoryName)</a>
                         </li>
                     }
                     </ul>
                 </div>
             </nav>
 
-        @*<div id="container-1"  data-aos="fade-up">
+        <div id="container-1"  data-aos="fade-up">
         @foreach (var item in Model)
         {
             <div class="box-all">
@@ -49,7 +49,7 @@
                 </div>
             </div>
         }
-        </div>*@
+        </div>
             
     </div>
 </div>
