@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -9,7 +10,7 @@ using WebApplication1.Models;
 
 namespace PFEMaster.Controllers
 {
-    
+    [Authorize(Roles = "admin")]
     public class UsersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -48,14 +49,16 @@ namespace PFEMaster.Controllers
         }
 
         // GET: Users/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(MultiViewModel model,string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var User = db.Users.Find(id);
+            //var address = db.Addresses.Include(a => a.UserId).Where(a => a.UserId == id);
+            var User =db.Users.Find(id);
+            ViewBag.UserRole = new SelectList(db.Roles.ToList(), "Name", "Name");
             if (User == null)
             {
                 return HttpNotFound();
@@ -68,6 +71,7 @@ namespace PFEMaster.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ApplicationUser User)
         {
+            ViewBag.UserRole = new SelectList(db.Roles.ToList(), "Name", "Name");
             if (ModelState.IsValid)
             {
                 db.Entry(User).State = EntityState.Modified;

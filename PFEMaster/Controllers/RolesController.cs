@@ -10,7 +10,7 @@ using WebApplication1.Models;
 
 namespace PFEMaster.Controllers
 {
-    
+    [Authorize(Roles = "admin")]
     public class RolesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

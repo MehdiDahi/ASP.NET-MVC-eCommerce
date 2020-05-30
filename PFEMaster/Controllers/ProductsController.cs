@@ -12,7 +12,7 @@ using System.IO;
 
 namespace PFEMaster.Controllers
 {
-   
+    
     public class ProductsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -55,6 +55,7 @@ namespace PFEMaster.Controllers
         }
 
         // GET: Products/addOrEdit
+        [Authorize(Roles = "admin,moderator")]
         public ActionResult addOrEdit(int id = 0)
         {
             Products products = new Products();
@@ -73,6 +74,7 @@ namespace PFEMaster.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin,moderator")]
         public ActionResult addOrEdit(Products products)
         {
 
@@ -112,6 +114,7 @@ namespace PFEMaster.Controllers
         }
 
         // GET: Products/Delete/5
+        [Authorize(Roles = "admin,moderator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -129,6 +132,7 @@ namespace PFEMaster.Controllers
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin,moderator")]
         public ActionResult DeleteConfirmed(int id)
         {
             Products products = db.Products.Find(id);

@@ -56,127 +56,104 @@ namespace WebApplication1.Controllers
             }
         }
 
-        ////
-        //// GET: /Account/ConnexionMuli
-        //[AllowAnonymous]
-        //public ActionResult ConnexionMuli()
-        //{
-        //    return View(new ConnexionMultiViewMolel { loginModel = new LoginViewModel(), registerModel = new RegisterViewModel(), addressModel = new Addresses(), applicationUserModel = new ApplicationUser()});
-        //}
+        //
+        // GET: /Account/AdminLogin
+        [AllowAnonymous]
+        public ActionResult AdminLogin()
+        {
+            return View();
+        }
 
-        ////
-        //// GET: /Account/AdminLogin
-        //[AllowAnonymous]
-        //public ActionResult AdminLogin(string returnUrl)
-        //{
-        //    ViewBag.ReturnUrl = returnUrl;
-        //    return View();
-        //}
-
-        ////
-        //// POST: /Account/AdminLogin
-        //[HttpPost]
-        //[AllowAnonymous]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> AdminLogin(LoginViewModel model, string returnUrl)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(model);
-        //    }
+        //
+        // POST: /Account/AdminLogin
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AdminLogin(LoginViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
 
-        //    // This doesn't count login failures towards account lockout
-        //    // To enable password failures to trigger account lockout, change to shouldLockout: true
-        //    var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-        //    switch (result)
-        //    {
-        //        case SignInStatus.Success:
-        //            return RedirectToLocal(returnUrl);
-        //        case SignInStatus.LockedOut:
-        //            return View("Lockout");
-        //        case SignInStatus.RequiresVerification:
-        //            return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-        //        case SignInStatus.Failure:
-        //        default:
-        //            ModelState.AddModelError("", "Invalid login attempt.");
-        //            return View(model);
-        //    }
-        //}
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, change to shouldLockout: true
+            string user_name = "";
+            var user = await UserManager.FindByEmailAsync(model.Email);
+            if (user != null)
+            {
+                if (user.UserRole == "admin" || user.UserRole == "moderator")
+                {
+                    user_name = user.UserName;
 
-        ////
-        //// GET: /Account/AdminRegister
-        //[AllowAnonymous]
-        //public ActionResult AdminRegister()
-        //{
-        //    ViewBag.UserRole = new SelectList(db.Roles.ToList(), "Name", "Name");
-        //    return View();
-        //}
+                    if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+                    {
+                        var result = await SignInManager.PasswordSignInAsync(user_name, model.Password, model.RememberMe, shouldLockout: false);
+                        switch (result)
+                        {
+                            case SignInStatus.Success:
+                                return RedirectToLocal("~/Categories");
+                            case SignInStatus.LockedOut:
+                                return View("Lockout");
+                            case SignInStatus.Failure:
+                            default:
+                                ModelState.AddModelError("", "Invalid login attempt.");
+                                return View(model);
+                        }
+                    }
 
-        ////
-        //// POST: /Account/Register
-        //[HttpPost]
-        //[AllowAnonymous]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> AdminRegister(RegisterViewModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        ViewBag.UserRole = new SelectList(db.Roles.ToList(), "Name", "Name");
-                
-        //        var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, UserRole = model.UserRole, Adresses = model.Adresses };
-        //        var result = await UserManager.CreateAsync(user, model.Password);
-        //        if (result.Succeeded)
-        //        {
-        //            //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                }
 
-        //            // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-        //            // Send an email with this link
-        //            // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-        //            // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-        //            // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-        //            await UserManager.AddToRoleAsync(user.Id,model.UserRole);
-        //            db.SaveChanges();
-        //            return RedirectToLocal("~/Addresses/Create?id="+user.Id);
-        //        }
-        //        AddErrors(result);
-        //    }
+                ModelState.AddModelError("", "You are not Admin Or Moderator.");
+                return View(model);
 
-        //    // If we got this far, something failed, redisplay form
-        //    return View(model);
-        //}
+            }
 
-        //// GET: Roles/EditUser/5
-        //public ActionResult EditUser(string id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
+            ModelState.AddModelError("", "Invalid Email.");
+            return View(model);
+        }
 
-        //    var role = db.Users.Find(id);
-        //    if (role == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(User);
-        //}
+        //
+        // GET: /Account/AdminRegister
+        [Authorize(Roles = "admin")]
+        public ActionResult AdminRegister()
+        {
+            ViewBag.UserRole = new SelectList(db.Roles.ToList(), "Name", "Name");
+            return View();
+        }
 
-        //// POST: Roles/EditUser/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult EditUser(RegisterViewModel user)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(user).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("~/Users");
-        //    }
+        //
+        // POST: /Account/AdminRegister
+        [HttpPost]
+        [Authorize(Roles = "admin")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AdminRegister(RegisterViewModel model)
+        {
+            ViewBag.UserRole = new SelectList(db.Roles.ToList(), "Name", "Name");
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, UserRole = model.UserRole, Adresses = model.Adresses };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-        //    return View(user);
+                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    await UserManager.AddToRoleAsync(user.Id, model.UserRole);
+                    db.SaveChanges();
+                    return RedirectToLocal("~/Users");
+                }
+                AddErrors(result);
+            }
 
-        //}
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
 
         //
         // GET: /Account/Login
@@ -201,20 +178,39 @@ namespace WebApplication1.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+            string user_name = "";
+            var user = await UserManager.FindByEmailAsync(model.Email);
+            if (user != null)
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+
+                if (user.UserRole == "buyer")
+                {
+                    user_name = user.UserName;
+
+                    if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+                    {
+                        var result = await SignInManager.PasswordSignInAsync(user_name, model.Password, model.RememberMe, shouldLockout: false);
+                        switch (result)
+                        {
+                            case SignInStatus.Success:
+                                return RedirectToLocal(returnUrl);
+                            case SignInStatus.LockedOut:
+                                return View("Lockout");
+                            case SignInStatus.Failure:
+                            default:
+                                ModelState.AddModelError("", "Invalid login attempt.");
+                                return View(model);
+                        }
+                    }
+
+                }
+
+                ModelState.AddModelError("", "You are not Registered yet.");
+                return View(model);
             }
+
+            ModelState.AddModelError("", "Invalid Email.");
+            return View(model);
         }
 
         //
@@ -273,12 +269,12 @@ namespace WebApplication1.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(ConnexionMultiViewMolel model)
+        public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.registerModel.UserName, Email = model.registerModel.Email, UserRole = model.registerModel.UserRole, Adresses = model.registerModel.Adresses };
-                var result = await UserManager.CreateAsync(user, model.registerModel.Password);
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, UserRole = model.UserRole };
+                var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
@@ -288,7 +284,7 @@ namespace WebApplication1.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    //await UserManager.AddToRoleAsync(user.Id, model.registerModel.UserRole);
+                    await UserManager.AddToRoleAsync(user.Id, model.UserRole);
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
@@ -513,13 +509,13 @@ namespace WebApplication1.Controllers
 
         //
         // POST: /Account/LogOff
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult LogOffAdmin()
-        //{
-        //    AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-        //    return RedirectToLocal("~/Account/AdminLogin");
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOffAdmin()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToLocal("~/Account/AdminLogin");
+        }
 
         //
         // POST: /Account/LogOff

@@ -10,9 +10,22 @@
   margin: 0px 0;
 }
 
-.h1 {
+#container-cnx .form-group a{
+    color:#5d683e;
+}
+#container-cnx .form-group a:hover{
+    color:cornflowerblue;
+}
+
+#container-cnx h1 {
   font-weight: bold;
   margin: 0;
+}
+
+#container-cnx .h1 {
+  font-weight: bold;
+  margin: 0;
+  color:#fff;
 }
 
 h2 {
@@ -57,7 +70,7 @@ button {
 }
 
 .btn-signin {
-  margin: 0 0px 0 29px;
+  //margin: 0 0px 0 29px;
   background: none;
   width: 100px;
   height: 34px;

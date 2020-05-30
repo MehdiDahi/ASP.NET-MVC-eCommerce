@@ -86,81 +86,62 @@
                         </div>
                     </div>
 
-                    @*<div class="form-group">
-        <label class="control-label col-md-2">Password</label>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-        </div>
-    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Role</label>
+                        <div class="col-md-10">
+                            @Html.DropDownList("UserRole", null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.UserRole, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-    <div class="form-group">
-        <label class="control-label col-md-2">Confirm Password</label>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
-        </div>
-    </div>
+                    @*<div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Contact Name</th>
+                                    <th>Country</th>
+                                    <th>Address</th>
+                                    <th>Zip Code</th>
+                                    <th>Mobile</th>
+                                    <th>Action</th>
 
-    <div class="form-group">
-        <label class="control-label col-md-2">Role</label>
-        <div class="col-md-10">
-            @Html.DropDownList("UserRole", null, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.UserRole, "", new { @class = "text-danger" })
-        </div>
-    </div>*@
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Contact Name</th>
+                                    <th>Country</th>
+                                    <th>Address</th>
+                                    <th>Zip Code</th>
+                                    <th>Mobile</th>
+                                    <th>Action</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+
+                                    <tr>
+                                        <td>@item.ContactName</td>
+                                        <td>@item.Country</td>
+                                        <td>@item.Address</td>
+                                        <td>@item.ZipCode</td>
+                                        <td>@item.Mobile</td>
+                                        <td>
+                                            <a href="~/Addresses/Edit?id=@item.AddressesId" class="btn btn-outline-secondary fa fa-pencil-alt"></a>
+                                            <a href="#" class="btn btn-outline-danger fa fa-trash"></a>
+                                        </td>
+
+
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>*@
+
                 </div>
             </div>
-            @*<div class="card mb-3">
-                <div class="card-header">
-                    <i class="fas fa-table"></i>
-                    Add New Adress
-
-                </div>
-                <div class="card-body">
-
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-                    <div class="form-group">
-                        <label class="control-label col-md-2">Contact Name</label>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.addressModel.ContactName, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.addressModel.ContactName, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-2">Country</label>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.addressModel.Country, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.addressModel.Country, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-2">Address</label>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.addressModel.Address, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.addressModel.Address, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-2">Zip/Postal Code</label>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.addressModel.ZipCode, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.addressModel.ZipCode, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-2">Mobile</label>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.addressModel.Mobile, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.addressModel.Mobile, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-            </div>*@
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <a href="~/Users" class="btn btn-danger">Cancel</a>

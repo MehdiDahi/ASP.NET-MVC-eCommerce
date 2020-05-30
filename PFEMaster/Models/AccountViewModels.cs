@@ -88,16 +88,21 @@ namespace WebApplication1.Models
         public string ConfirmPassword { get; set; }
         public string UserRole { get; set; }
         public ICollection<Addresses> Adresses { get; set; }
+
+        public RegisterViewModel()
+        {
+            UserRole = "buyer";
+        }
     }
 
-    public class ConnexionMultiViewMolel
+    public class MultiViewModel
     {
-        public LoginViewModel loginModel { get; set; }
-        public RegisterViewModel registerModel { get; set; }
+        //public LoginViewModel loginModel { get; set; }
+        //public RegisterViewModel registerModel { get; set; }
         public ApplicationUser applicationUserModel { get; set; }
         public Addresses addressModel { get; set; }
-        public Products productModel { get; set; }
-        public Category categoryModel { get; set; }
+        //public Products productModel { get; set; }
+        //public Category categoryModel { get; set; }
 
     }
 

@@ -1,0 +1,132 @@
+﻿@using PFEMaster.Models
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@{
+    if (Session["cartSession"] != null && Request.IsAuthenticated)
+    {
+            <div id="content-wrapper">
+                <div class="container-fluid">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Qte</th>
+                                        <th>Total</th>
+
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    @foreach (var cart in (List<ShoppingCart>)Session["cartSession"])
+                                    {
+                                        @*<tr>
+                                            <td>
+                                            <input style="display:none;" name="UserId" value="@cart.User.Id" />
+                                            </td>
+                                        </tr>*@
+                                        <tr>
+                                            <td>
+                                                <img src="@Url.Content(@cart.Products.ImageUrl)" style="height:100px; width:100px;" alt="" />
+                                                <br />@cart.Products.ProductName
+                                            </td>
+                                            <td>@cart.Products.Price $</td>
+                                            <td>
+                                                <input type="text" id="qte" name="qte" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="@cart.Qte" readonly />
+                                            <td>@(String.Format("{0:0.00}", cart.Products.Price * cart.Qte)) $</td>
+                                            @*<td>
+                                                <a href="~/ShoppingCart/Delete?id=@cart.Products.ProductsId" class="btn btn-outline-danger fa fa-trash" onclick="return confirm('Are you sure you want to remove this?');"></a>
+                                            </td>*@
+                                        </tr>
+                                    }
+
+                                    <tr>
+                                        <td colspan="3">
+                                            Total
+                                        </td>
+                                        <td>
+                                            @{
+                                                List<ShoppingCart> temp = (List<ShoppingCart>)Session["cartSession"];
+                                                var total = String.Format("{0:0.00}", temp.Sum(x => x.Qte * x.Products.Price));
+                                            }
+
+                                            @total $
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <i class="fas fa-table"></i>
+                                    Add Shipping Address
+
+                                </div>
+                                <div class="card-body">
+                                 @using (Html.BeginForm("ProcessOrder", "ShoppingCart", FormMethod.Post, new { encrypte = "multipart/form-data" }))
+                                    {
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Contact Name</label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" id="ContactName" name="ContactName" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Email</label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" id="Email" name="Email" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Country</label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" id="Country" name="Country" required/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Address</label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" id="Address" name="Address" required/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Zip Code</label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" id="ZipCode" name="ZipCode" required/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Mobile</label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" id="Mobile" name="Mobile" required/>
+                                        </div>
+                                    </div>
+                                    @Html.ActionLink("Cancel", "allProducts", "Products",null, new { @class = "btn btn-primary" })
+                                    <input type="submit" value="Process Order" class="btn btn-primary" />
+                                    }
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                    
+                    }
+                    else
+                    {
+                    <div class="card-body">
+                        <label>No items in your Cart !</label>
+                    </div>
+                    }
+}

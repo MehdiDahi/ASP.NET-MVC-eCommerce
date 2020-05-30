@@ -7,10 +7,6 @@
 
 <section id="main-container-1">
     <div class="wrapper">
-        <h2 data-aos="fade-right">
-            nos spécialités <br />
-            du terroir
-        </h2>
 
         <div class="container d-md-flex align-items-stretch">
 
@@ -44,7 +40,11 @@
                             <label>Price : </label>
                             @Html.DisplayFor(modelItem => item.Price) $
                         </div>
-                        <button class="btn">Ajouter au panier</button>
+                        <a class="btn" href="~/ShoppingCart/OrderNow?id=@item.ProductsId">
+                            Add To Cart
+                        </a>
+                        
+                        @*@Html.ActionLink("Add To Cart", "OrderNow", "ShoppingCart", new { id= item.ProductsId}, null)*@
                     </div>
                 </div>
             </div>

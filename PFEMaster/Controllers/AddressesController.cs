@@ -56,7 +56,7 @@ namespace PFEMaster.Controllers
                 addresses.UserId = user.Id;
                 db.Addresses.Add(addresses);
                 db.SaveChanges();
-                return RedirectToAction("~/Users");
+                return RedirectToAction("Index", "Users");
             }
             return View(addresses);
         }

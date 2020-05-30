@@ -1604,6 +1604,7 @@
     <Content Include="Content\css\connexion.css" />
     <Content Include="Content\css\contactUs.css" />
     <Content Include="Content\css\demo.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\image\background\U1.jpg" />
     <Content Include="Content\image\background\U2.jpg" />
@@ -1665,8 +1666,11 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderDetailsController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1743,14 +1747,29 @@
     <Compile Include="Migrations\202005280024432_dateUp.Designer.cs">
       <DependentUpon>202005280024432_dateUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005301602013_OrderTable.cs" />
+    <Compile Include="Migrations\202005301602013_OrderTable.Designer.cs">
+      <DependentUpon>202005301602013_OrderTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005302116148_OrderDetailsTable.cs" />
+    <Compile Include="Migrations\202005302116148_OrderDetailsTable.Designer.cs">
+      <DependentUpon>202005302116148_OrderDetailsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005302140196_UpdateTables.cs" />
+    <Compile Include="Migrations\202005302140196_UpdateTables.Designer.cs">
+      <DependentUpon>202005302140196_UpdateTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Addresses.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetails.cs" />
     <Compile Include="Models\Products.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
+    <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1861,7 +1880,6 @@
     <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\Account\AdminLogin.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\Delete.cshtml" />
@@ -1974,6 +1992,20 @@
     <Content Include="Content\SideBare\scss\style.scss" />
     <Content Include="Views\Products\productsByCat.cshtml" />
     <Content Include="Views\Products\addOrEdit.cshtml" />
+    <Content Include="Views\Account\AdminLogin.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\CheckOut.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\OrderSuccess.cshtml" />
+    <Content Include="Views\OrderDetails\Create.cshtml" />
+    <Content Include="Views\OrderDetails\Delete.cshtml" />
+    <Content Include="Views\OrderDetails\Details.cshtml" />
+    <Content Include="Views\OrderDetails\Edit.cshtml" />
+    <Content Include="Views\OrderDetails\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2038,6 +2070,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005280024432_dateUp.resx">
       <DependentUpon>202005280024432_dateUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005301602013_OrderTable.resx">
+      <DependentUpon>202005301602013_OrderTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005302116148_OrderDetailsTable.resx">
+      <DependentUpon>202005302116148_OrderDetailsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005302140196_UpdateTables.resx">
+      <DependentUpon>202005302140196_UpdateTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

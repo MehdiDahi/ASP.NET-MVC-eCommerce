@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@*@using Microsoft.AspNet.Identity
+
+@if (Request.IsAuthenticated)
+{*@
+        
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -99,10 +104,14 @@
                         </button>
                     </div>
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    @using (Html.BeginForm("LogOffAdmin", "Account", FormMethod.Post, new { id = "Logoff" }))
+                    {
+                    @Html.AntiForgeryToken()
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="#">Logout</a>  
+                        <a class="btn btn-primary" href="javascript:document.getElementById('Logoff').submit()">Logout</a>  
                     </div>
+                    }
                 </div>
             </div>
         </div>
@@ -126,3 +135,4 @@
 <script src="~/Content/AdminStyle/js/demo/datatables-demo.js"></script>
 <script src="~/Content/AdminStyle/js/demo/chart-area-demo.js"></script>
 <script src="~/Content/js/scripts.js"></script>
+@*}*@

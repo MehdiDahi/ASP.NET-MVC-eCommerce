@@ -41,6 +41,8 @@ namespace WebApplication1.Models
 
         public System.Data.Entity.DbSet<PFEMaster.Models.Addresses> Addresses { get; set; }
 
-        
+        public System.Data.Entity.DbSet<PFEMaster.Models.Order> Orders { get; set; }
+
+        public System.Data.Entity.DbSet<PFEMaster.Models.OrderDetails> OrderDetails { get; set; }
     }
 }

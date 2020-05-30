@@ -17,6 +17,9 @@
                     <li>
                         <a href="~/Home/Contact" class="link">Nous contacter</a>
                     </li>
+                    <li>
+                        <a href="~/Home/Contact" class="link">Nous contacter</a>
+                    </li>
                 </ul>
             </nav>
             <div class="nav-user">
@@ -24,15 +27,21 @@
                     <input type="text" placeholder="Rechercher..." />
                     <img src="~/Content/image/User/search.svg" alt="" />
                 </a>
-                <a href="" class="basket">
+                <a href="~/ShoppingCart" class="basket">
                     <img src="~/Content/image/User/shopping-bag.svg" alt="" />
-                    <div id="nb-cart"><p>5</p></div>
+                    @*<div id="nb-cart"><p>5</p></div>*@
                 </a>
+                <div class="user-name link">
+                    <a href="~/Orders">
+                        Orders
+                    </a>
+                </div>
+                
                 <div class="user-name link">
                     @Html.ActionLink("Salut " + User.Identity.GetUserName(), "Index", "Manage")
                 </div>
                     
-                <a href="javascript:document.getElementById('Logoff').submit()"><button class="btn-cnx" id="cnx">Déconnecter</button></a>
+                <a href="javascript:document.getElementById('Logoff').submit()"><button class="btn-cnx" id="cnx">Sign out</button></a>
             </div>
         </div>
     }
@@ -59,11 +68,14 @@ else
                 <input type="text" placeholder="Rechercher..." />
                 <img src="~/Content/image/User/search.svg" alt="" />
             </a>
-            <a href="" class="basket">
+            <a href="~/ShoppingCart" class="basket">
                 <img src="~/Content/image/User/shopping-bag.svg" alt="" />
-                <div id="nb-cart"><p>5</p></div>
+                @*<div id="nb-cart"><p>5</p></div>*@
             </a>
-            <a href="~/Account/ConnexionMuli"><button class="btn-cnx" id="cnx">Connecter</button></a>
+            <a href="~/Orders" class="user-name link">
+                Orders
+            </a>
+            <a href="~/Account/Login"><button class="btn-cnx" id="cnx">Sign in</button></a>
         </div>
     </div>
 }

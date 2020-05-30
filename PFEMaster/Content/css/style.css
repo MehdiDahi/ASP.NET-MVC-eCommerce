@@ -16,6 +16,10 @@ li {
   list-style: none;
 }
 
+#errormsg{
+    color:red;
+}
+
 #header .wrapper {
   width: 80%;
   margin: 0 auto;
@@ -104,6 +108,7 @@ header {
   width: 100%;
   transition: width 0.3s;
 }
+
 
 .nav-user {
   margin-right: auto;

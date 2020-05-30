@@ -11,6 +11,7 @@ using WebApplication1.Models;
 
 namespace PFEMaster.Controllers
 {
+    
     public class CategoriesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -37,6 +38,7 @@ namespace PFEMaster.Controllers
         }
 
         // GET: Categories/Create
+        [Authorize(Roles = "admin,moderator")]
         public ActionResult Create()
         {
             return View();
@@ -47,6 +49,7 @@ namespace PFEMaster.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin,moderator")]
         public ActionResult Create([Bind(Include = "CategoryId,CategoryName")] Category category)
         {
             if (ModelState.IsValid)
@@ -60,6 +63,7 @@ namespace PFEMaster.Controllers
         }
 
         // GET: Categories/Edit/5
+        [Authorize(Roles = "admin,moderator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,6 +83,7 @@ namespace PFEMaster.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin,moderator")]
         public ActionResult Edit([Bind(Include = "CategoryId,CategoryName")] Category category)
         {
             if (ModelState.IsValid)
@@ -91,6 +96,7 @@ namespace PFEMaster.Controllers
         }
 
         // GET: Categories/Delete/5
+        [Authorize(Roles = "admin,moderator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,6 +114,7 @@ namespace PFEMaster.Controllers
         // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin,moderator")]
         public ActionResult DeleteConfirmed(int id)
         {
             Category category = db.Categories.Find(id);

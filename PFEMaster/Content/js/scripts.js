@@ -65,3 +65,15 @@ function Add(url) {
 
     });
 }
+
+//function inputKey() {
+
+//    $("#qte").keypress(function (e) {
+//        if(e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57))
+//        {
+//            alert("Enter Numbers Only in Qte Field!");
+//            //$("#errormsg").html("Enter Numbers Only in Qte Field!").show().fadeOut("slow");
+//            return false;
+//        }
+//    });
+//}

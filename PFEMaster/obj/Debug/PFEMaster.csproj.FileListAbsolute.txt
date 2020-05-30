@@ -173,3 +173,7 @@ C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaste
 C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaster\obj\Debug\PFEMaster.pdb
 C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaster\obj\Debug\PFEMaster.Migrations.aa.resources
 C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaster\obj\Debug\PFEMaster.Migrations.dateUp.resources
+C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaster\obj\Debug\PFEMaster.Migrations.OrderTable.resources
+C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaster\obj\Debug\PFEMaster.csprojResolveAssemblyReference.cache
+C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaster\obj\Debug\PFEMaster.Migrations.OrderDetailsTable.resources
+C:\Users\El Mahdi Dahi\Documents\GithubRepository\ASP.NET-MVC-eCommerce\PFEMaster\obj\Debug\PFEMaster.Migrations.UpdateTables.resources
